@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=dev
+      - HTTP_SERVER_PORT=3001
+      - TOKEN_KEY=481URqU1bvDaoH+kw0AcMoaR2sL/tsnBQ/9w+Rl3z8U=
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=postgres
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=tatar123
+    links:
+      - db
+  db:
+    image: postgres:14
+    ports:
+      - "8765:5432"
+    environment:
+      POSTGRES_PASSWORD: "tatar123"
